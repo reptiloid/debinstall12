@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/s
 
 SRC_DIR=~/.local/src
 DOT_DIR=dotfiles
@@ -47,15 +47,15 @@ install_nerdfonts(){
     cd /tmp || exit
     fonts=(
     # "CascadiaCode"
-    # "FiraCode" 
-    # "Go-Mono" 
-    # "Hack" 
-    # "Inconsolata" 
-    # "Iosevka" 
-    "JetBrainsMono" 
-    # "Mononoki" 
-    # "RobotoMono" 
-    # "SourceCodePro" 
+    # "FiraCode"
+    # "Go-Mono"
+    # "Hack"
+    # "Inconsolata"
+    # "Iosevka"
+    "JetBrainsMono"
+    # "Mononoki
+    # "RobotoMono"
+    # "SourceCodePro"
     "Ubuntu"
     )
 
@@ -66,7 +66,6 @@ install_nerdfonts(){
         unzip $font.zip -d $HOME/.local/share/fonts/$font/
         rm $font.zip
     done
-	
     fc-cache
 }
 
@@ -83,7 +82,6 @@ deploy_dotfiles() {
 	ln -sf ~/Pictures/Wallpapers/wallpaper0002.jpg ~/Pictures/defwall.jpg
 	for file in .vimrc .xinitrc .Xresources ; do cp -r "$SRC_DIR"/"$DOT_DIR"/"$file" ~/ ; done
 }
-
 
 install_qtile() {
 	echo
@@ -109,13 +107,13 @@ main() {
 
 	# install_qtile
 
-    # get_sl_tools
+        # get_sl_tools
 	# install_st
 
 	# get_dotfiles
 	# deploy_dotfiles
 
-    # install_nerdfonts
+        # install_nerdfonts
 
 	# set_permissions
 	# finish
