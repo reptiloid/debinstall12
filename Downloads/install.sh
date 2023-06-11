@@ -1,4 +1,4 @@
-#!/bin/s
+#!/bin/sh
 
 SRC_DIR=~/.local/src
 DOT_DIR=dotfiles
@@ -101,19 +101,19 @@ enable_firewall() {
 }
 
 main() {
-	install_pkgs
-	enable_firewall
-	make_userdirs
+	# install_pkgs
+	# enable_firewall
+	# make_userdirs
 
 	# install_qtile
 
-        # get_sl_tools
+    # get_sl_tools
 	# install_st
 
 	# get_dotfiles
 	# deploy_dotfiles
 
-        # install_nerdfonts
+    install_nerdfonts
 
 	# set_permissions
 	# finish
