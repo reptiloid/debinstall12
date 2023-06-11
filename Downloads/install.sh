@@ -66,6 +66,7 @@ install_nerdfonts(){
         unzip $font.zip -d $HOME/.local/share/fonts/$font/
         rm $font.zip
     done
+	
     fc-cache
 }
 
