@@ -2,15 +2,14 @@
 setxkbmap -option grp:ralt_rshift_toggle us,ru
 
 # Wallpaper
-nitrogen --restore &
+# nitrogen --restore &
 
 # VM Screen Config
 xrandr --output Virtual1 --mode 1440x900 &
 
-xrdb merge ~/.Xresources &
+# xrdb merge ~/.Xresources &
 
-picom --transparent-clipping &
+# picom --transparent-clipping &
 
 # Start DWM 
-sh ~/.config/chadwm/scripts/bar.sh &
-exec dwm
+exec qtile start
