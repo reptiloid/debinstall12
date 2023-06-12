@@ -1,5 +1,5 @@
 # Keymap
-setxkbmap -option grp:ralt_rshift_toggle us,ru
+setxkbmap -option grp:ralt_rshift_toggle us,ru &
 
 # Wallpaper
 # nitrogen --restore &
