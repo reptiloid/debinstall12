@@ -5,7 +5,7 @@ setxkbmap -option grp:ralt_rshift_toggle us,ru
 # nitrogen --restore &
 
 # VM Screen Config
-xrandr --output Virtual1 --mode 1440x900 &
+# xrandr --output Virtual1 --mode 1440x900 &
 
 # xrdb merge ~/.Xresources &
 
