@@ -7,8 +7,9 @@ GIT_SRC=https://bitbucket.org/reptiloid666
 install_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
-	sudo apt install -y htop wget curl git yadm \
-		nala feh unzip ufw \
+	sudo apt install -y htop wget git yadm \
+		nala feh unzip ufw exa \
+		fonts-dejavu-extra \
         libx11-dev libxft-dev libharfbuzz-dev \
         xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
         libpangocairo-1.0-0 python3-pip python3-xcffib python3-cairocffi
