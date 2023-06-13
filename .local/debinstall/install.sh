@@ -1,13 +1,14 @@
 #!/bin/sh
 
-SRC_DIR=~/.local/src
+SRC_DIR=~/.local/debinstall/src
 DOT_DIR=dotfiles
 GIT_SRC=https://bitbucket.org/reptiloid666
 
 install_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
-	sudo apt install -y htop wget curl git unzip ufw yadm \
+	sudo apt install -y htop wget curl git yadm \
+		feh unzip ufw \
         libx11-dev libxft-dev libharfbuzz-dev \
         xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
         libpangocairo-1.0-0 python3-pip python3-xcffib python3-cairocffi
@@ -29,40 +30,21 @@ install_st() {
 	sudo make install
 }
 
-set_yadm() {
-	echo
-	printf '%s\n' "Getting dotfiles" && sleep 1
-    yadm clone "$GIT_SRC"/dotfiles.git
-}
-
-get_dotfiles() {
-	echo
-	printf '%s\n' "Getting dotfiles" && sleep 1
-	cd "$SRC_DIR" || exit
-	git clone "$GIT_SRC"/dotfiles.git
-}
 
 install_nerdfonts(){
     mkdir -p ~/.local/share/fonts
     cd /tmp || exit
     fonts=(
-    # "CascadiaCode"
-    # "FiraCode"
-    # "Go-Mono"
-    # "Hack"
-    # "Inconsolata"
-    # "Iosevka"
-    "JetBrainsMono"
-    # "Mononoki
-    # "RobotoMono"
-    # "SourceCodePro"
-    "Ubuntu"
+		"JetBrainsMono"
+		# "Mononoki
+		# "RobotoMono"
+		# "SourceCodePro"
+		"Ubuntu"
     )
 
     for font in ${fonts[@]}
     do
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.1/$font.zip
-        # wget https://github.com/ryanoasis/nerd-fonts/releases/download/v2.3.3/$font.zip
         unzip $font.zip -d $HOME/.local/share/fonts/$font/
         rm $font.zip
     done
@@ -85,9 +67,12 @@ deploy_dotfiles() {
 
 install_qtile() {
 	echo
-	printf '%s\n' "Installing qtile" && sleep 1
-    pip3 install --force-reinstall xcffib==1.3.0
-    pip3 install --no-use-pep517 --no-build-isolation qtile
+	printf '%s\n' "Installing QTILE" && sleep 1
+    pip3 install --force-reinstall --break-system-packages xcffib==1.3.0
+    pip3 install --no-use-pep517 --break-system-packages --no-build-isolation qtile
+	
+	#pip3 install --force-reinstall xcffib==1.3.0
+    #pip3 install --no-use-pep517 --no-build-isolation qtile
 }
 
 make_userdirs() {
@@ -101,14 +86,14 @@ enable_firewall() {
 }
 
 main() {
-	# install_pkgs
-	# enable_firewall
-	# make_userdirs
+	install_pkgs
+	enable_firewall
+	make_userdirs
 
-	# install_qtile
+	install_qtile
 
-    # get_sl_tools
-	# install_st
+    get_sl_tools
+	install_st
 
 	# get_dotfiles
 	# deploy_dotfiles
