@@ -8,7 +8,7 @@ install_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
 	sudo apt install -y htop wget curl git yadm \
-		feh unzip ufw \
+		nala feh unzip ufw \
         libx11-dev libxft-dev libharfbuzz-dev \
         xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
         libpangocairo-1.0-0 python3-pip python3-xcffib python3-cairocffi
@@ -36,8 +36,6 @@ install_nerdfonts(){
     cd /tmp || exit
     fonts=(
 		"JetBrainsMono"
-		# "Mononoki
-		# "RobotoMono"
 		# "SourceCodePro"
 		"Ubuntu"
     )
@@ -68,11 +66,15 @@ deploy_dotfiles() {
 install_qtile() {
 	echo
 	printf '%s\n' "Installing QTILE" && sleep 1
+	pip3 install --force-reinstall xcffib==1.3.0
+    pip3 install --no-use-pep517 --no-build-isolation qtile
+}
+
+install_qtile12() {
+	echo
+	printf '%s\n' "Installing QTILE" && sleep 1
     pip3 install --force-reinstall --break-system-packages xcffib==1.3.0
     pip3 install --no-use-pep517 --break-system-packages --no-build-isolation qtile
-	
-	#pip3 install --force-reinstall xcffib==1.3.0
-    #pip3 install --no-use-pep517 --no-build-isolation qtile
 }
 
 make_userdirs() {
@@ -87,19 +89,17 @@ enable_firewall() {
 
 main() {
 	install_pkgs
-	enable_firewall
+	install_nerdfonts
 	make_userdirs
-
-	install_qtile
-
+	install_qtile12
     get_sl_tools
 	install_st
 
 	# get_dotfiles
 	# deploy_dotfiles
-
-    install_nerdfonts
-
+	
+	# enable_firewall
+	
 	# set_permissions
 	# finish
 }
