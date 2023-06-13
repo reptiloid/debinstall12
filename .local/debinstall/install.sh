@@ -4,11 +4,16 @@ SRC_DIR=~/.local/debinstall/src
 DOT_DIR=dotfiles
 GIT_SRC=https://bitbucket.org/reptiloid666
 
+install_nala() {
+	echo
+	printf '%s\n' "Installing Nala" && sleep 1
+	sudo apt install -y nala
+}
+
 install_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
-	sudo apt install -y htop wget git yadm \
-		nala feh unzip ufw exa \
+	sudo nala install -y htop feh unzip ufw exa \
 		fonts-dejavu-extra \
         libx11-dev libxft-dev libharfbuzz-dev \
         xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
@@ -38,7 +43,7 @@ install_nerdfonts(){
     fonts=(
 		"JetBrainsMono"
 		# "SourceCodePro"
-		"Ubuntu"
+		# "Ubuntu"
     )
 
     for font in ${fonts[@]}
@@ -89,6 +94,7 @@ enable_firewall() {
 }
 
 main() {
+	install_nala
 	install_pkgs
 	install_nerdfonts
 	make_userdirs
