@@ -42,7 +42,8 @@ filemanager = "st -e sh lfub"
 htop = "st htop"
 rofi = "/bin/sh -c 'rofi -show drun'"
 shutdown = "rofi -show power-menu -modi power-menu:rofi-power-menu"
-change_bg = "feh --bg-scale -z /home/rep/Walls"
+#change_bg = "feh --bg-scale -z /home/rep/Walls"
+change_bg = "feh --bg-fill -z /home/rep/Pictures/walls"
 
 keys = [
     # A list of available commands that can be bound to keys can be found
