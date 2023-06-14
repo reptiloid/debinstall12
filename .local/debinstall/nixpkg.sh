@@ -10,7 +10,9 @@ install_nix() {
 install_nix_pkgs() {
 	echo
 	printf '%s\n' "Installing Nix Pkgs" && sleep 1
-	nix-env -iA nixpkgs.neovim nixpkgs.picom nixpkgs.htop-vim \
+	nix-env -iA nixpkgs.picom nixpkgs.htop-vim \
+		nixpkgs.neovim \
+		nixpkgs.starship \
         # nixpkgs.obsidian nixpkgs.librewolf
 }
 
