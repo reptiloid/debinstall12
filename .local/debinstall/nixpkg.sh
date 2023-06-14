@@ -7,12 +7,19 @@ install_nix() {
 	. /home/rep/.nix-profile/etc/profile.d/nix.sh
 }
 
+install_nix_pkgs_nonfree() {
+	echo
+	printf '%s\n' "Installing Unfree Nix Pkgs" && sleep 1
+	export NIXPKGS_ALLOW_UNFREE=1
+	nix-env -iA nixpkgs.obsidian
+}
+
 install_nix_pkgs() {
 	echo
 	printf '%s\n' "Installing Nix Pkgs" && sleep 1
 	nix-env -iA nixpkgs.picom nixpkgs.htop-vim \
 	    nixpkgs.lf nixpkgs.syncthing \
-		nixpkgs.obsidian nixpkgs.freetube \
+		nixpkgs.freetube \
 		nixpkgs.neovim \
 		nixpkgs.starship \
         nixpkgs.librewolf
@@ -21,6 +28,7 @@ install_nix_pkgs() {
 main() {
 	install_nix
 	install_nix_pkgs
+	install_nix_pkgs_nonfree
 }
 
 main
