@@ -14,7 +14,7 @@ install_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
 	sudo nala install -y net-tools feh unzip ufw exa \
-		fzf autojump bash-completion tar \
+		ripgrep fzf autojump bash-completion tar \
 		fonts-dejavu-extra \
         libx11-dev libxft-dev libharfbuzz-dev \
         xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
@@ -27,8 +27,6 @@ get_sl_tools() {
 	mkdir -p "$SRC_DIR"
 	cd "$SRC_DIR" || exit
     git clone https://github.com/lukesmithxyz/st
-	# git clone "$GIT_SRC"/dwm.git
-	# git clone "$GIT_SRC"/dmenu.git
 	# git clone "$GIT_SRC"/st.git
 }
 
