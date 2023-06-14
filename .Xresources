@@ -8,10 +8,10 @@ Xft.lcdfilter:	lcddefault
 st.font:         JetBrainsMono Nerd Font:style:medium:pixelsize=12
 
 ! window padding
-st.borderpx: 20
+st.borderpx: 3
 
 !- 0.1 to 0.9 = transparency
-st.alpha: .9
+st.alpha: .8
 
 *background: #181f21
 *foreground: #dadada
