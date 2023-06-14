@@ -13,8 +13,8 @@ install_nala() {
 install_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
-	sudo nala install -y htop feh unzip ufw exa \
-		autojump bash-completion tar \
+	sudo nala install -y net-tools feh unzip ufw exa \
+		fzf autojump bash-completion tar \
 		fonts-dejavu-extra \
         libx11-dev libxft-dev libharfbuzz-dev \
         xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
