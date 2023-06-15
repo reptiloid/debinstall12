@@ -54,9 +54,7 @@ export EDITOR=nvim
 export VISUAL=nvim
 alias pico='edit'
 alias spico='sedit'
-alias nano='edit'
 alias snano='sedit'
-alias vim='nvim'
 
 # To have colors for ls and all grep commands such as grep, egrep and zgrep
 export CLICOLOR=1
@@ -95,11 +93,7 @@ export LESS_TERMCAP_us=$'\E[01;32m'
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Edit this .bashrc file
-alias ebrc='edit ~/.bashrc'
 
-# Show help for this .bashrc file
-alias hlp='less ~/.bashrc_help'
 
 # alias to show the date
 alias da='date "+%Y-%m-%d %A %T %Z"'
@@ -107,7 +101,6 @@ alias da='date "+%Y-%m-%d %A %T %Z"'
 # Alias's to modified commands
 alias cp='cp -i'
 alias mv='mv -i'
-alias rm='trash -v'
 alias mkdir='mkdir -p'
 alias ps='ps auxf'
 alias ping='ping -c 10'
@@ -115,8 +108,6 @@ alias less='less -R'
 alias cls='clear'
 alias apt-get='sudo apt-get'
 alias multitail='multitail --no-repeat -c'
-alias freshclam='sudo freshclam'
-alias vi='nvim'
 alias svi='sudo vi'
 alias vis='nvim "+set si"'
 
@@ -458,7 +449,8 @@ netinfo ()
 ################################ NVIM #####################
 ###########################################################
 
-alias nvim-chad="NVIM_APPNAME=nvim-chad nvim"
+alias nvim-chad="NVIM_APPNAME=NvChad nvim"
+alias vi="NVIM_APPNAME=NvChad nvim"
 
 nvims() {
   items=("default" "NvChad")
