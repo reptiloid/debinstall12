@@ -21,8 +21,7 @@ install_nix_pkgs() {
 	    nixpkgs.lf nixpkgs.syncthing \
 		nixpkgs.freetube \
 		nixpkgs.neovim \
-		nixpkgs.starship \
-        nixpkgs.librewolf
+		nixpkgs.starship
 }
 
 main() {
