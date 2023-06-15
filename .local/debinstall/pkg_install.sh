@@ -10,6 +10,26 @@ install_nala() {
 	sudo apt install -y nala
 }
 
+install_librewolf() {
+	echo
+	printf '%s\n' "Installing Librewolf" && sleep 1
+	sudo nala install -y gnupg lsb-release apt-transport-https ca-certificates
+	distro=bullseye
+	wget -O- https://deb.librewolf.net/keyring.gpg | sudo gpg --dearmor -o /usr/share/keyrings/librewolf.gpg
+	
+	sudo tee /etc/apt/sources.list.d/librewolf.sources << EOF > /dev/null
+	Types: deb
+	URIs: https://deb.librewolf.net
+	Suites: $distro
+	Components: main
+	Architectures: amd64
+	Signed-By: /usr/share/keyrings/librewolf.gpg
+	EOF
+
+	sudo nala update
+	sudo nala install librewolf -y
+}
+
 install_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
@@ -80,13 +100,15 @@ enable_firewall() {
 }
 
 main() {
-	install_nala
-	install_pkgs
-	install_nerdfonts
-	make_userdirs
-	install_qtile12
-    get_sl_tools
-	install_st
+	# install_nala
+	# install_pkgs
+	# install_nerdfonts
+	# make_userdirs
+	# install_qtile12
+    # get_sl_tools
+	# install_st
+	
+	install_librewolf
 	
 	# enable_firewall
 	
