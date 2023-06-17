@@ -7,7 +7,7 @@ install_custom_config() {
 }
 
 main() {
-	# install_NvChad
+	install_NvChad
 	install_custom_config
 }
 
