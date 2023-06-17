@@ -1,17 +1,17 @@
 #!/bin/sh
 
-GIT_SRC=https://bitbucket.org/reptiloid666
+GIT_SRC=https://github.com/reptiloid
 
 install_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
-	sudo apt install -y wget curl git yadm
+	sudo apt install -y wget git yadm
 }
 
 set_yadm() {
 	echo
 	printf '%s\n' "Setting YADM" && sleep 1
-    yadm clone "$GIT_SRC"/dotfiles.git
+	yadm clone "$GIT_SRC"/debinstall12.git
 }
 
 main() {
@@ -20,4 +20,3 @@ main() {
 }
 
 main
-
