@@ -508,3 +508,12 @@ elif [ -f "/usr/share/autojump/autojump.bash" ]; then
 else
 	echo "can't found the autojump script"
 fi
+
+#######################################################
+############# PYENV ###################################
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+if [ -f "$HOME/.pyenv/bin/pyenv" ]; then	
+	eval "$(pyenv init -)"
+fi
