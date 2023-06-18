@@ -6,6 +6,9 @@ source "$INS_DIR"/pkg_install.sh
 # Install NIX Pkgs
 source "$INS_DIR"/nixpkg.sh
 
+# Install AppImg Pkgs
+source "$INS_DIR"/appimg_manager.sh
+
 # Install NVIM Configs
 source "$INS_DIR"/nvim_configs.sh
 
