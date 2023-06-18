@@ -57,7 +57,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "c", lazy.spawn(rofi), desc="Rofi Launcher"),
     Key([mod], "b", lazy.spawn(change_bg), desc="Change Bg Wallpaper"),
-    Key([mod], "b", lazy.spawn("chwall-dmenu"), desc="Select Bg Wallpaper"),
+    Key([mod], "s", lazy.spawn("chwall-dmenu"), desc="Select Bg Wallpaper"),
     Key([mod], "0", lazy.spawn(shutdown), desc="Shutdown Menu"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
