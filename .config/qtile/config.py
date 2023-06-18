@@ -1,29 +1,3 @@
-# Copyright (c) 2010 Aldo Cortesi
-# Copyright (c) 2010, 2014 dequis
-# Copyright (c) 2012 Randall Ma
-# Copyright (c) 2012-2014 Tycho Andersen
-# Copyright (c) 2012 Craig Barnes
-# Copyright (c) 2013 horsik
-# Copyright (c) 2013 Tao Sauvage
-#
-# Permission is hereby granted, free of charge, to any person obtaining a copy
-# of this software and associated documentation files (the "Software"), to deal
-# in the Software without restriction, including without limitation the rights
-# to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-# copies of the Software, and to permit persons to whom the Software is
-# furnished to do so, subject to the following conditions:
-#
-# The above copyright notice and this permission notice shall be included in
-# all copies or substantial portions of the Software.
-#
-# THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-# IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-# FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-# AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-# LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-# OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-# SOFTWARE.
-
 from libqtile import bar, layout, widget, hook
 from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen, ScratchPad, DropDown
 from libqtile.lazy import lazy
@@ -83,6 +57,7 @@ keys = [
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "c", lazy.spawn(rofi), desc="Rofi Launcher"),
     Key([mod], "b", lazy.spawn(change_bg), desc="Change Bg Wallpaper"),
+    Key([mod], "b", lazy.spawn("chwall-dmenu"), desc="Select Bg Wallpaper"),
     Key([mod], "0", lazy.spawn(shutdown), desc="Shutdown Menu"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
@@ -148,7 +123,7 @@ keys.extend([
     #     Key([], 't', lazy.group['scratchpad'].dropdown_toggle('term')),
     #     Key([], 'f', lazy.group['scratchpad'].dropdown_toggle('filemanager')),
     # ]),
-    Key([mod], 's', lazy.group['scratchpad'].dropdown_toggle('htop')),
+    # Key([mod], 's', lazy.group['scratchpad'].dropdown_toggle('htop')),
     Key(['mod1'], 'Return', lazy.group['scratchpad'].dropdown_toggle('filemanager')),
     Key(['control'], 'Return', lazy.group['scratchpad'].dropdown_toggle('term')),
 ])
