@@ -16,7 +16,7 @@ install_am() {
 }
 
 install_pkgs() {
-	am -i neovim chromium
+	am -i nvim poddr chromium
 }
 
 main() {
