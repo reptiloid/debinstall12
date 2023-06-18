@@ -28,7 +28,7 @@ install_pkgs() {
 	printf '%s\n' "Installing packages" && sleep 1
 	sudo nala install -y net-tools feh unzip ufw exa \
 		ripgrep fzf autojump bash-completion tar \
-		zathura fonts-dejavu-extra \
+		evince fonts-dejavu-extra \
         libx11-dev libxft-dev libharfbuzz-dev \
         xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
         libpangocairo-1.0-0 python3-pip python3-xcffib python3-cairocffi
