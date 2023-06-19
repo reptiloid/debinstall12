@@ -14,22 +14,28 @@ install_nix_pkgs_nonfree() {
 	nix-env -iA nixpkgs.obsidian
 }
 
-install_nix_pkgs() {
+install_nix_additional_pkgs() {
 	echo
-	printf '%s\n' "Installing Nix Pkgs" && sleep 1
-	nix-env -iA nixpkgs.picom
- 		nixpkgs.htop-vim \
-	    nixpkgs.lf \
-	 	nixpkgs.syncthing \
-		nixpkgs.freetube \
-		# nixpkgs.neovim \
-		nixpkgs.starship
+	printf '%s\n' "Installing Unfree Nix Pkgs" && sleep 1
+	nix-env -iA nixpkgs.syncthing \
+ 				nixpkgs.freetube \
+ 		
+}
+
+install_nix_base_pkgs() {
+	echo
+	printf '%s\n' "Installing Nix Base Pkgs" && sleep 1
+	nix-env -iA nixpkgs.picom \
+ 				nixpkgs.htop-vim \
+				nixpkgs.lf \
+				nixpkgs.starship
 }
 
 main() {
 	install_nix
-	install_nix_pkgs
-	install_nix_pkgs_nonfree
+	install_nix_base_pkgs
+	# install_nix_pkgs_nonfree
+	# install_nix_additional_pkgs
 }
 
 main
