@@ -16,13 +16,15 @@ install_am() {
 }
 
 install_pkgs() {
-	am -i nvim poddr chromium
+	am -i nvim \ 
+ 	      # poddr \
+	      # chromium
 }
 
 main() {
 	clone_am
 	install_am
-	install_pkgs
+	# install_pkgs
 }
 
 main
