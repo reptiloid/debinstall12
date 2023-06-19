@@ -7,13 +7,13 @@ source "$INS_DIR"/pkg_install.sh
 source "$INS_DIR"/nixpkg.sh
 
 # Install AppImg Pkgs
-source "$INS_DIR"/appimg_manager.sh
+# source "$INS_DIR"/appimg_manager.sh
 
 # Install NVIM Configs
 source "$INS_DIR"/nvim_configs.sh
 
 # Install PyEnv
-source "$INS_DIR"/python_install.sh
+# source "$INS_DIR"/python_install.sh
 
 # Set Permissions
 source "INS_DIR"/set_permissions.sh
