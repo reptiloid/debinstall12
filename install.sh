@@ -16,7 +16,7 @@ source "$INS_DIR"/nvim_configs.sh
 # source "$INS_DIR"/python_install.sh
 
 # Set Permissions
-source "INS_DIR"/set_permissions.sh
+source "$INS_DIR"/set_permissions.sh
 
 # 72726LV-7JFW5TZ-AMAEXUH-MBREDU7-X52GVUK-BBZJKP6-IDTPQY6-KTZQZAF
 
