@@ -40,7 +40,7 @@ get_sl_tools() {
 	printf '%s\n' "Getting custom Suckless tools repositories" && sleep 1
 	mkdir -p "$SRC_DIR"
 	cd "$SRC_DIR" || exit
-    git clone https://github.com/lukesmithxyz/st
+	git clone https://github.com/lukesmithxyz/st
 	# git clone "$GIT_SRC"/st.git
 }
 
@@ -99,9 +99,10 @@ main() {
 	install_nerdfonts
 	make_userdirs
 	install_qtile12
-    get_sl_tools
+    	get_sl_tools
 	install_st
-	install_librewolf_bullseye
+ 
+	# install_librewolf_bullseye
 	
 	# enable_firewall
 	
