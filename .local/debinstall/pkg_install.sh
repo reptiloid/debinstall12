@@ -29,6 +29,7 @@ install_pkgs() {
 	sudo nala install -y net-tools feh unzip ufw exa \
 		ripgrep fzf autojump bash-completion tar \
 		evince fonts-dejavu-extra dmenu rofi \
+  		thunar \
 		zsync \
 		libx11-dev libxft-dev libharfbuzz-dev \
 		xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
