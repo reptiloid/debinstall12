@@ -97,7 +97,9 @@ enable_firewall() {
 main() {
 	install_nala
 	install_pkgs
-	install_nerdfonts
+ 
+	# install_nerdfonts
+ 
 	make_userdirs
 	install_qtile12
     	get_sl_tools
