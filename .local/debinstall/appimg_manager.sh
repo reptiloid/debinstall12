@@ -24,7 +24,7 @@ install_pkgs() {
 main() {
 	clone_am
 	install_am
-	# install_pkgs
+	install_pkgs
 }
 
 main
