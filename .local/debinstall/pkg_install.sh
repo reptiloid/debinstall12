@@ -105,7 +105,7 @@ main() {
     	get_sl_tools
 	install_st
  
-	# install_librewolf_bullseye
+	install_librewolf_bullseye
 	
 	# enable_firewall
 	
