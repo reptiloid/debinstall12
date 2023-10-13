@@ -1,5 +1,15 @@
 from libqtile import bar, layout, widget, hook
-from libqtile.config import Click, Drag, Group, Key, KeyChord, Match, Screen, ScratchPad, DropDown
+from libqtile.config import (
+    Click,
+    Drag,
+    Group,
+    Key,
+    KeyChord,
+    Match,
+    Screen,
+    ScratchPad,
+    DropDown,
+)
 from libqtile.lazy import lazy
 from libqtile.utils import guess_terminal
 
@@ -12,13 +22,23 @@ import subprocess
 mod = "mod4"
 # terminal = guess_terminal()
 terminal = "st"
-filemanager = "st -e sh lfub"
+terminal2 = "/home/rep/.local/kitty.app/bin/kitty"
+filemanager = "st lf"
+# filemanager = "st -e sh lfub"
 htop = "st htop"
-rofi = "/bin/sh -c 'rofi -show drun'"
+# rofi = "/bin/sh -c 'rofi -show dru'"
+rofi = "/home/rep/.config/rofi/launchers/type-1/launcher.sh"
 shutdown = "/home/rep/.config/rofi/powermenu/type-2/powermenu.sh"
 # shutdown = "rofi -show power-menu -modi power-menu:rofi-power-menu"
-#change_bg = "feh --bg-scale -z /home/rep/Walls"
+# change_bg = "feh --bg-scale -z /home/rep/Walls"
 change_bg = "feh --bg-fill -z /home/rep/Pictures/walls"
+change_bg_unsplash = "feh --bg-fill -z /home/rep/Pictures/walls/*unsplash*"
+
+
+def change_wp():
+    lazy.spawn(change_bg)
+    lazy.hide_show_bar(position="bottom")
+
 
 keys = [
     # A list of available commands that can be bound to keys can be found
@@ -31,14 +51,23 @@ keys = [
     Key([mod], "space", lazy.layout.next(), desc="Move window focus to other window"),
     # Move windows between left/right columns or move up/down in current stack.
     # Moving out of range in Columns layout will create new column.
-    Key([mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"),
-    Key([mod, "shift"], "l", lazy.layout.shuffle_right(), desc="Move window to the right"),
+    Key(
+        [mod, "shift"], "h", lazy.layout.shuffle_left(), desc="Move window to the left"
+    ),
+    Key(
+        [mod, "shift"],
+        "l",
+        lazy.layout.shuffle_right(),
+        desc="Move window to the right",
+    ),
     Key([mod, "shift"], "j", lazy.layout.shuffle_down(), desc="Move window down"),
     Key([mod, "shift"], "k", lazy.layout.shuffle_up(), desc="Move window up"),
     # Grow windows. If current window is on the edge of screen and direction
     # will be to screen edge - window would shrink.
     Key([mod, "control"], "h", lazy.layout.grow_left(), desc="Grow window to the left"),
-    Key([mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"),
+    Key(
+        [mod, "control"], "l", lazy.layout.grow_right(), desc="Grow window to the right"
+    ),
     Key([mod, "control"], "j", lazy.layout.grow_down(), desc="Grow window down"),
     Key([mod, "control"], "k", lazy.layout.grow_up(), desc="Grow window up"),
     Key([mod], "n", lazy.layout.normalize(), desc="Reset all window sizes"),
@@ -53,19 +82,23 @@ keys = [
         desc="Toggle between split and unsplit sides of stack",
     ),
     # Toggle active window to fullscreen
-    Key([mod], "f", lazy.window.toggle_fullscreen()),
-
+    # Key([mod], "f", lazy.window.toggle_fullscreen()),
     Key([mod], "Return", lazy.spawn(terminal), desc="Launch terminal"),
     Key([mod], "c", lazy.spawn(rofi), desc="Rofi Launcher"),
-    Key([mod], "b", lazy.spawn(change_bg), desc="Change Bg Wallpaper"),
-    Key([mod], "s", lazy.spawn("chwall-dmenu"), desc="Select Bg Wallpaper"),
+    Key([mod], "f", lazy.spawn(change_bg), desc="Change Bg Wallpaper"),
+    Key([mod], "p", lazy.spawn(change_bg_unsplash), desc="Wallpaper Unsplash"),
+    Key([mod], "s", lazy.spawn("sxpape --set"), desc="Select Bg Wallpaper"),
+    # Key([mod], "s", lazy.spawn("chwall-dmenu"), desc="Select Bg Wallpaper"),
     Key([mod], "0", lazy.spawn(shutdown), desc="Shutdown Menu"),
+    Key([mod], "t", lazy.spawn(terminal2), desc="Kitty"),
     # Toggle between different layouts as defined below
     Key([mod], "Tab", lazy.next_layout(), desc="Toggle between layouts"),
     Key([mod], "w", lazy.window.kill(), desc="Kill focused window"),
     Key([mod, "control"], "r", lazy.reload_config(), desc="Reload the config"),
     Key([mod, "control"], "q", lazy.shutdown(), desc="Shutdown Qtile"),
     Key([mod], "r", lazy.spawncmd(), desc="Spawn a command using a prompt widget"),
+    Key([mod], "b", lazy.hide_show_bar(position="bottom")),
+    # Key([mod], "b", change_wp()),
 ]
 
 groups = [Group(i) for i in "123456789"]
@@ -95,43 +128,62 @@ for i in groups:
     )
 
 groups.append(
-   ScratchPad("scratchpad", [ 
-        DropDown("htop", "st htop",
-                 x=.05,
-                 y=.05,
-                 opacity=1,
-                 width=.9,
-                 height=.9,
-                 on_focus_lost_hide=True),
-        DropDown("term", "st",
-                 x=.15,
-                 y=.3,
-                 opacity=1,
-                 width=.7,
-                 height=.6,
-                 on_focus_lost_hide=True),
-        DropDown("filemanager", filemanager,
-                 x=.05,
-                 y=.05,
-                 width=.9,
-                 height=.9,
-                 opacity=.99,
-                 on_focus_lost_hide=True) ]) 
-        )
+    ScratchPad(
+        "scratchpad",
+        [
+            DropDown(
+                "htop",
+                "st htop",
+                x=0.05,
+                y=0.05,
+                opacity=1,
+                width=0.9,
+                height=0.9,
+                on_focus_lost_hide=True,
+            ),
+            DropDown(
+                "term",
+                "st",
+                x=0.15,
+                y=0.3,
+                opacity=1,
+                width=0.7,
+                height=0.6,
+                on_focus_lost_hide=True,
+            ),
+            DropDown(
+                "filemanager",
+                filemanager,
+                x=0.05,
+                y=0.05,
+                width=0.9,
+                height=0.9,
+                opacity=0.99,
+                on_focus_lost_hide=True,
+            ),
+        ],
+    )
+)
 
-keys.extend([
-    # KeyChord([mod], "s", [
-    #     Key([], 't', lazy.group['scratchpad'].dropdown_toggle('term')),
-    #     Key([], 'f', lazy.group['scratchpad'].dropdown_toggle('filemanager')),
-    # ]),
-    # Key([mod], 's', lazy.group['scratchpad'].dropdown_toggle('htop')),
-    Key(['mod1'], 'Return', lazy.group['scratchpad'].dropdown_toggle('filemanager')),
-    Key(['control'], 'Return', lazy.group['scratchpad'].dropdown_toggle('term')),
-])
+keys.extend(
+    [
+        # KeyChord([mod], "s", [
+        #     Key([], 't', lazy.group['scratchpad'].dropdown_toggle('term')),
+        #     Key([], 'f', lazy.group['scratchpad'].dropdown_toggle('filemanager')),
+        # ]),
+        # Key([mod], 's', lazy.group['scratchpad'].dropdown_toggle('htop')),
+        Key(
+            ["mod1"], "Return", lazy.group["scratchpad"].dropdown_toggle("filemanager")
+        ),
+        Key(["control"], "Return", lazy.group["scratchpad"].dropdown_toggle("term")),
+    ]
+)
 
 
 layouts = [
-    layout.Columns(border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=2, margin=[10, 10, 10, 10]),
+    layout.Columns(
+        border_focus_stack=["#d75f5f", "#8f3d3d"], border_width=3, margin=[5, 5, 5, 5]
+    ),
     layout.Max(),
     # Try more layouts by unleashing below layouts.
     # layout.Stack(num_stacks=2),
@@ -157,7 +209,7 @@ screens = [
     Screen(
         bottom=bar.Bar(
             [
-                widget.CurrentLayout(),
+                # widget.CurrentLayout(),
                 widget.GroupBox(),
                 widget.Prompt(),
                 widget.WindowName(),
@@ -184,8 +236,15 @@ screens = [
 
 # Drag floating layouts.
 mouse = [
-    Drag([mod], "Button1", lazy.window.set_position_floating(), start=lazy.window.get_position()),
-    Drag([mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()),
+    Drag(
+        [mod],
+        "Button1",
+        lazy.window.set_position_floating(),
+        start=lazy.window.get_position(),
+    ),
+    Drag(
+        [mod], "Button3", lazy.window.set_size_floating(), start=lazy.window.get_size()
+    ),
     Click([mod], "Button2", lazy.window.bring_to_front()),
 ]
 
@@ -207,7 +266,7 @@ floating_layout = layout.Floating(
         Match(wm_class="ssh-askpass"),  # ssh-askpass
         Match(title="branchdialog"),  # gitk
         Match(title="pinentry"),  # GPG key password entry
-    ]
+    ],
 )
 auto_fullscreen = True
 focus_on_window_activation = "smart"
@@ -231,15 +290,14 @@ wl_input_rules = None
 wmname = "LG3D"
 
 
-
 # Set wallpaper
 @hook.subscribe.startup_once
 def autostart():
-    wallpaper = os.path.expanduser('~/.config/qtile/scripts/wallpaper.sh')
+    wallpaper = os.path.expanduser("~/.config/qtile/scripts/wallpaper.sh")
     # subprocess.call("screenlayout")
     subprocess.call([wallpaper])
+
 
 # @hook.subscribe.screen_change
 # def restart_on_randr(qtile, ev):
 #     qtile.cmd_restart()
-
