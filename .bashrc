@@ -185,6 +185,7 @@ alias ungz='tar -xvzf'
 alias logs="sudo find /var/log -type f -exec file {} \; | grep 'text' | cut -d' ' -f1 | sed -e's/:$//g' | grep -v '[0-9]$' | xargs tail -f"
 
 
+alias yy="yazi"
 
 #######################################################
 # SPECIAL FUNCTIONS
@@ -483,6 +484,15 @@ trim()
 
 
 #######################################################
+# DOOM EMACS
+#######################################################
+
+export DOOM_EMACS_BIN="$HOME/.config/emacs/bin"
+export PATH="$DOOM_EMACS_BIN:$PATH"
+
+
+
+#######################################################
 # Set the ultimate amazing command prompt
 #######################################################
 
@@ -517,3 +527,14 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 if [ -f "$HOME/.pyenv/bin/pyenv" ]; then	
 	eval "$(pyenv init -)"
 fi
+
+export NVM_DIR="$HOME/.reflex/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# bun
+export BUN_INSTALL="$HOME/.reflex/.bun"
+export PATH=$BUN_INSTALL/bin:$PATH
+
+[[ -f ~/.bash-preexec.sh ]] && source ~/.bash-preexec.sh
+eval "$(atuin init bash)"
