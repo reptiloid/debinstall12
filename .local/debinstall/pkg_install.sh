@@ -59,7 +59,8 @@ install_nerdfonts_tarxz(){
     for font in ${fonts[@]}
     do
         wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$font.tar.xz
-        tar -xf $font.tar.xz -C $HOME/.local/share/fonts/$font/
+        mkdir -p ~/.local/share/fonts/$font
+        tar -xf $font.tar.xz -C $HOME/.local/share/fonts/$font
         rm $font.tar.xz
     done
     fc-cache
