@@ -4,7 +4,7 @@ install_nix() {
 	echo
 	printf '%s\n' "Installing Nix" && sleep 1
 	sh <(curl -L https://nixos.org/nix/install) --no-daemon
-	. /home/rep/.nix-profile/etc/profile.d/nix.sh
+	. /home/$USER/.nix-profile/etc/profile.d/nix.sh
 }
 
 install_nix_pkgs_nonfree() {
@@ -18,7 +18,8 @@ install_nix_additional_pkgs() {
 	echo
 	printf '%s\n' "Installing Unfree Nix Pkgs" && sleep 1
 	nix-env -iA nixpkgs.syncthing \
- 				nixpkgs.freetube \
+ 				# nixpkgs.freetube \
+				nixpkgs.lazygit
  		
 }
 
@@ -28,6 +29,7 @@ install_nix_base_pkgs() {
 	nix-env -iA nixpkgs.picom \
  				nixpkgs.htop-vim \
 				nixpkgs.lf \
+				nixpkgs.yazi \
 				nixpkgs.starship
 }
 

@@ -23,6 +23,7 @@ set_profile_pyenv() {
 main() {
 	install_pyenv_dependencies
 	install_pyenv
+  
 	# set_bashrc_pyenv
 	set_profile_pyenv
 }

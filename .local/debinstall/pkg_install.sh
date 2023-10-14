@@ -10,12 +10,12 @@ install_nala() {
 	sudo apt install -y nala
 }
 
-install_librewolf_bullseye() {
+install_librewolf_bookworm() {
 	echo
 	printf '%s\n' "Installing LibreWolf" && sleep 1
 	sudo nala install -y gnupg lsb-release apt-transport-https ca-certificates
 	curl https://deb.librewolf.net/keyring.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/librewolf.gpg >/dev/null
-	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/librewolf.gpg] http://deb.librewolf.net bullseye main" \
+	echo "deb [arch=amd64 signed-by=/usr/share/keyrings/librewolf.gpg] http://deb.librewolf.net bookworm main" \
 		| sudo tee /etc/apt/sources.list.d/librewolf.list
 		
 	sudo nala update
@@ -55,9 +55,9 @@ install_nerdfonts(){
     mkdir -p ~/.local/share/fonts
     cd /tmp || exit
     fonts=(
-		"JetBrainsMono"
-		# "SourceCodePro"
-		# "Ubuntu"
+		# "JetBrainsMono"
+		"SourceCodePro"
+		"Ubuntu"
     )
 
     for font in ${fonts[@]}
@@ -95,17 +95,17 @@ enable_firewall() {
 }
 
 main() {
-	install_nala
-	install_pkgs
+	# install_nala
+	# install_pkgs
  
-	# install_nerdfonts
+	install_nerdfonts
  
-	make_userdirs
-	install_qtile12
-    	get_sl_tools
-	install_st
+	# make_userdirs
+	# install_qtile12
+  # get_sl_tools
+	# install_st
  
-	install_librewolf_bullseye
+	# install_librewolf_bookworm
 	
 	# enable_firewall
 	
@@ -113,4 +113,3 @@ main() {
 }
 
 main
-

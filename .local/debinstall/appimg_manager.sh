@@ -15,16 +15,21 @@ install_am() {
 	sudo ./INSTALL
 }
 
-install_pkgs() {
-	am -i nvim \ 
- 	      # poddr \
-	      # chromium
+install_additional_pkgs() {
+	am -i chromium \
+    freetube \
+    obsidian
+}
+
+install_base_pkgs() {
+	am -i nvim
 }
 
 main() {
 	clone_am
 	install_am
-	install_pkgs
+	install_base_pkgs
+  # install_additional_pkgs
 }
 
 main
