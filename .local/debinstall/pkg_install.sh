@@ -28,9 +28,7 @@ install_pkgs() {
 	printf '%s\n' "Installing packages" && sleep 1
 	sudo nala install -y net-tools feh unzip ufw exa \
 		ripgrep fzf autojump bash-completion tar \
-		# evince \
     fonts-dejavu-extra dmenu rofi \
-    thunar \
 		zsync \
 		libx11-dev libxft-dev libharfbuzz-dev \
 		xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
@@ -51,8 +49,23 @@ install_st() {
 	sudo make install
 }
 
+install_nerdfonts_tarxz(){
+    mkdir -p ~/.local/share/fonts
+    cd /tmp || exit
+    fonts=(
+		"JetBrainsMono"
+    )
 
-install_nerdfonts(){
+    for font in ${fonts[@]}
+    do
+        wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/$font.tar.xz
+        tar -xf $font.tar.xz -C $HOME/.local/share/fonts/$font/
+        rm $font.tar.xz
+    done
+    fc-cache
+}
+
+install_nerdfonts_zip(){
     mkdir -p ~/.local/share/fonts
     cd /tmp || exit
     fonts=(
@@ -98,8 +111,9 @@ enable_firewall() {
 main() {
 	install_nala
 	install_pkgs
- 
-	install_nerdfonts
+
+  install_nerdfonts_tarxz
+	# install_nerdfonts_zip
  
 	make_userdirs
 	install_qtile12
