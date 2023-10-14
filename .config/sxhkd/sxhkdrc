@@ -1,0 +1,7 @@
+# rofi
+control + grave
+    rofi -show drun
+
+control + space
+    feh --bg-fill -z /home/rep/Pictures/walls/*.png
+    # feh --bg-fill -z /home/rep/Pictures/walls/*unsplash*

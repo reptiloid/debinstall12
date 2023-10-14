@@ -1,0 +1,47 @@
+#!/bin/sh
+
+
+HELP () {
+echo ""
+echo "[-h]       help"
+echo "[--set]    set wallpaper"
+echo "[--show]   show wallpaper on sxiv"
+echo ""
+exit
+}
+
+[ "$1" = "--help" ] && HELP
+
+PAPE_PATH="$HOME/Pictures/walls/"
+PAPE=$(ls $PAPE_PATH | dmenu -l 15 -p "Wallpaper: ")
+WALLPAPER=$PAPE_PATH$PAPE 
+V="1.0.0"
+
+VERSION () {
+echo "sxpape (Suckless dmenu papes) version $V. "
+}
+
+SET () {
+cp $WALLPAPER $HOME/.local/pape
+feh --bg-fill $HOME/.local/pape 
+# xwallpaper --zoom $HOME/.local/pape 
+}
+
+
+SEE () {
+sxiv $WALLPAPER
+echo "Set wallpaper? [S/n] "
+read opt
+[ "$opt" = "s" ] && SET
+[ "$opt" = "S" ] && SET
+[ "$opt" = "n" ] && echo "exiting..."
+[ "$opt" = "N" ] && echo "exiting..."
+}
+
+# Flags
+[ "$1" = "--set" ] && SET
+[ "$1" = "--see" ] &&  SEE
+[ "$1" = "--version" ] && VERSION
+[ -z "$1" ] && echo "Use -h to see a list of usable flags" && exit
+
+# SET
