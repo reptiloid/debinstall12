@@ -8,15 +8,23 @@ install_pkgs() {
 	sudo apt install -y wget git yadm
 }
 
-set_yadm() {
+set_yadm_step1() {
 	echo
 	printf '%s\n' "Setting YADM" && sleep 1
-	yadm clone "$GIT_SRC"/debinstall12.git
+	yadm clone --depth=1 "$GIT_SRC"/debinstall12.git
 }
+
+set_yadm_step2() {
+	# echo
+	# printf '%s\n' "Setting YADM" && sleep 1
+  yadm checkout "$HOME"
+}
+
 
 main() {
 	install_pkgs
-	set_yadm
+	set_yadm_step1
+	# set_yadm_step2
 }
 
 main
