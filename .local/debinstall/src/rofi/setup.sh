@@ -49,7 +49,7 @@ install_themes() {
 # Main
 main() {
 	install_fonts
-	install_themes
+	# install_themes
 }
 
 main

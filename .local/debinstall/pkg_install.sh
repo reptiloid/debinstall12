@@ -24,8 +24,8 @@ install_librewolf_bookworm() {
 
 install_additional_pkgs() {
 	echo
-	printf '%s\n' "Installing packages" && sleep 1
-	sudo nala install -y dmenu 
+	printf '%s\n' "Installing packages additional packages" && sleep 1
+	sudo nala install -y dmenu sxhkd kitty
 }
 
 install_pkgs() {
@@ -116,7 +116,7 @@ enable_firewall() {
 main() {
 	install_nala
 	install_pkgs
-  # install_additional_pkgs
+  install_additional_pkgs
 
   install_nerdfonts_tarxz
 	# install_nerdfonts_zip

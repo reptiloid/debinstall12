@@ -30,6 +30,7 @@ install_nix_base_pkgs() {
  				nixpkgs.htop-vim \
 				nixpkgs.lf \
 				nixpkgs.yazi \
+				nixpkgs.zoxide \
 				nixpkgs.starship
 }
 

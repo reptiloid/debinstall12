@@ -22,9 +22,7 @@ install_dep_pkgs() {
 }
 
 install_additional_pkgs() {
-	am -i chromium \
-    freetube \
-    obsidian
+	am -i chromium freetube obsidian
 }
 
 install_base_pkgs() {
