@@ -28,8 +28,9 @@ install_pkgs() {
 	printf '%s\n' "Installing packages" && sleep 1
 	sudo nala install -y net-tools feh unzip ufw exa \
 		ripgrep fzf autojump bash-completion tar \
-		evince fonts-dejavu-extra dmenu rofi \
-  		thunar \
+		# evince \
+    fonts-dejavu-extra dmenu rofi \
+    thunar \
 		zsync \
 		libx11-dev libxft-dev libharfbuzz-dev \
 		xinit xserver-xorg x11-xserver-utils xdg-user-dirs \
@@ -55,7 +56,7 @@ install_nerdfonts(){
     mkdir -p ~/.local/share/fonts
     cd /tmp || exit
     fonts=(
-		# "JetBrainsMono"
+		"JetBrainsMono"
 		"SourceCodePro"
 		"Ubuntu"
     )
@@ -95,19 +96,19 @@ enable_firewall() {
 }
 
 main() {
-	# install_nala
-	# install_pkgs
+	install_nala
+	install_pkgs
  
 	install_nerdfonts
  
-	# make_userdirs
-	# install_qtile12
-  # get_sl_tools
-	# install_st
+	make_userdirs
+	install_qtile12
+  get_sl_tools
+	install_st
  
-	# install_librewolf_bookworm
+	install_librewolf_bookworm
 	
-	# enable_firewall
+	enable_firewall
 	
 	# finish
 }
