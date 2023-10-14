@@ -25,7 +25,7 @@ install_librewolf_bookworm() {
 install_additional_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
-	sudo nala install -y dmenu zsync
+	sudo nala install -y dmenu 
 }
 
 install_pkgs() {

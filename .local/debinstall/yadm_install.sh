@@ -18,11 +18,15 @@ set_yadm_step2() {
   yadm checkout "$HOME"
 }
 
+start_installing() {
+  bash ~/.local/debinstall/install.sh
+}
 
 main() {
 	install_pkgs
 	set_yadm_step1
 	set_yadm_step2
+  start_installing
 }
 
 main

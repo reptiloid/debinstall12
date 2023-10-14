@@ -15,6 +15,12 @@ install_am() {
 	sudo ./INSTALL
 }
 
+install_dep_pkgs() {
+	echo
+	printf '%s\n' "Installing packages" && sleep 1
+	sudo nala install -y thunar zsync
+}
+
 install_additional_pkgs() {
 	am -i chromium \
     freetube \
@@ -26,6 +32,7 @@ install_base_pkgs() {
 }
 
 main() {
+  install_dep_pkgs
 	clone_am
 	install_am
 	install_base_pkgs
