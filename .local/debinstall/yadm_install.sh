@@ -15,8 +15,6 @@ set_yadm_step1() {
 }
 
 set_yadm_step2() {
-	# echo
-	# printf '%s\n' "Setting YADM" && sleep 1
   yadm checkout "$HOME"
 }
 
@@ -24,7 +22,7 @@ set_yadm_step2() {
 main() {
 	install_pkgs
 	set_yadm_step1
-	# set_yadm_step2
+	set_yadm_step2
 }
 
 main
