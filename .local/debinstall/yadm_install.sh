@@ -29,4 +29,4 @@ main() {
   start_installing
 }
 
-main
+time main

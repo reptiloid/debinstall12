@@ -67,4 +67,4 @@ main() {
   final_step
 }
 
-time main
+main
