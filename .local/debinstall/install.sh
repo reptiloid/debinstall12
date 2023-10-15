@@ -7,36 +7,64 @@ BBlue='\033[1;34m'  BPurple='\033[1;35m' BCyan='\033[1;36m'  BWhite='\033[1;37m'
 
 
 
-echo -e ${BBlue}"\n[*] Installing Apt Packages + Fonts..." ${Color_Off}
-source "$INS_DIR"/pkg_install.sh
+install_apt_pkgs() {
+  echo -e ${BBlue}"\n[*] Installing Apt Packages + Fonts...\n" ${Color_Off}
+  source "$INS_DIR"/pkg_install.sh
+}
 
 
-echo -e ${BYellow}"[*] Installing Nix Pkgs...\n" ${Color_Off}
-source "$INS_DIR"/nixpkg.sh
+install_nix_pkgs() {
+  echo -e ${BYellow}"\n[*] Installing Nix Pkgs...\n" ${Color_Off}
+  source "$INS_DIR"/nixpkg.sh
+}
+
+install_appimg_pkgs() {
+  echo -e ${BPurple}"\n[*] Installing AppImg Pkgs...\n" ${Color_Off}
+  source "$INS_DIR"/appimg_manager.sh
+}
 
 
-echo -e ${BPurple}"[*] Installing AppImg Pkgs..." ${Color_Off}
-source "$INS_DIR"/appimg_manager.sh
+install_chadnvim() {
+  echo -e ${BGreen}"\n[*] Installing ChadNvim Config.\n" ${Color_Off}
+  source "$INS_DIR"/nvim_configs.sh
+}
 
 
-echo -e ${BGreen}"[*] Installing ChadNvim Config.\n" ${Color_Off}
-source "$INS_DIR"/nvim_configs.sh
-
-
-echo -e ${BBlue}"[*] Installing rofi configs + Fonts..." ${Color_Off}
-source "$INS_DIR"/roficfg.sh
+install_rofi() {
+  echo -e ${BBlue}"\n[*] Installing rofi configs + Fonts...\n" ${Color_Off}
+  source "$INS_DIR"/roficfg.sh
+}
 
 # Install PyEnv
 # source "$INS_DIR"/python_install.sh
 
-# Set Permissions
-echo -e ${BPurple}"[*] Setting permissions..." ${Color_Off}
-source "$INS_DIR"/set_permissions.sh
+set_permissions() {
+  echo -e ${BPurple}"\n[*] Setting permissions...\n" ${Color_Off}
+  source "$INS_DIR"/set_permissions.sh
+}
 
 # 72726LV-7JFW5TZ-AMAEXUH-MBREDU7-X52GVUK-BBZJKP6-IDTPQY6-KTZQZAF
 
-clear
-echo -e ${BRed}"[*] Cleaning..." ${Color_Off}
-sudo apt autoremove
+final_step() {
+  clear
+  echo -e ${BRed}"\n[*] Cleaning...\n" ${Color_Off}
+  sudo apt autoremove
+  echo -e ${BRed}"\n[*] All Done! You Can Now Reboot.\n" ${Color_Off}
+}
 
-printf "\e[1;32mAll Done! You Can Now Reboot.\e[0m\n"
+test123() {
+  echo -e ${BPurple}"\n[*] Updating...\n" ${Color_Off}
+  sudo nala update
+}
+
+main() {
+  install_apt_pkgs
+  install_nix_pkgs
+  install_appimg_pkgs
+  install_chadnvim
+  install_rofi
+  set_permissions
+  final_step
+}
+
+time main
