@@ -15,30 +15,30 @@ cache_dir  = ""
 
 [opener]
 folder = [
-	{ exec = 'open -R "$@"', display_name = "Reveal in Finder" },
+	{ exec = 'open -R "$@"' },
 	{ exec = '$EDITOR "$@"' },
 ]
 archive = [
-	{ exec = 'unar "$1"', display_name = "Extract here" },
+	{ exec = 'unar "$1"' },
 ]
 text = [
 	{ exec = '$EDITOR "$@"', block = true },
 ]
 image = [
-	{ exec = 'open "$@"', display_name = "Open" },
-	{ exec = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true, display_name = "Show EXIF" },
+	{ exec = 'open "$@"' },
+	{ exec = '''exiftool "$1"; echo "Press enter to exit"; read''', block = true },
 ]
 video = [
 	{ exec = 'mpv "$@"' },
-	{ exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, display_name = "Show media info" },
+	{ exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true },
 ]
 audio = [
 	{ exec = 'mpv "$@"' },
-	{ exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true, display_name = "Show media info" },
+	{ exec = '''mediainfo "$1"; echo "Press enter to exit"; read''', block = true },
 ]
 fallback = [
-	{ exec = 'open "$@"', display_name = "Open" },
-	{ exec = 'open -R "$@"', display_name = "Reveal in Finder" },
+	{ exec = 'open "$@"' },
+	{ exec = 'open -R "$@"' },
 ]
 
 [open]

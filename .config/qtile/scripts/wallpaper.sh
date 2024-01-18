@@ -6,5 +6,6 @@ setxkbmap -option grp:ralt_rshift_toggle us,ru &
 
 sxhkd &
 picom --transparent-clipping &
-# feh --bg-fill ~/Pictures/walls/3.jpg &
-feh --bg-fill -z ~/Pictures/walls
+opensnitch-ui &
+feh --bg-fill ~/Pictures/walls/3.jpg &
+# feh --bg-fill -z ~/Pictures/walls
