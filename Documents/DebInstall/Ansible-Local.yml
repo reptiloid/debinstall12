@@ -1,0 +1,7 @@
+---
+  - name: "Playing with Ansible localy"
+    hosts: localhost
+    connection: local 
+    tasks:
+      - import_tasks: backups/output_of_ls_command.yml
+
