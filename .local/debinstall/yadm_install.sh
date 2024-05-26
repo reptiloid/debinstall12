@@ -5,7 +5,7 @@ GIT_SRC=https://github.com/reptiloid
 install_pkgs() {
 	echo
 	printf '%s\n' "Installing packages" && sleep 1
-	sudo apt install -y wget git yadm
+	sudo apt install -y wget git yadm ansible
 }
 
 set_yadm_step1() {
@@ -19,13 +19,14 @@ set_yadm_step2() {
 }
 
 start_installing() {
-  bash ~/.local/debinstall/install.sh
+  # bash ~/.local/debinstall/install.sh
+  ansible-playbook Documents/DebInstall/Ansible-Local.yml
 }
 
 main() {
-	install_pkgs
-	set_yadm_step1
-	set_yadm_step2
+  install_pkgs
+  set_yadm_step1
+  set_yadm_step2
   start_installing
 }
 
